@@ -6,6 +6,13 @@ void main(){
     MaterialApp(
       title: "Demo Project",
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: "Lobster",
+        textTheme: TextTheme(
+
+        )
+      ),
+    
       home: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -17,19 +24,37 @@ void main(){
               fontSize: 24.0,
               // fontWeight: FontWeight.bold
               fontWeight: FontWeight.w700,
-              fontFamily: "Arial",
+              // fontFamily: "Lobster",
               fontStyle: FontStyle.italic,
               letterSpacing: 5.5,
             ),
           ),
           centerTitle: true,
         ),
-        body: Image.asset(
-          "assets/poor_man.png",
-          width: 500,
-          height: 800,
-          fit: BoxFit.cover,
-        )
+
+        body: Center(
+          child: Text(
+            "গড়িয়াহাটে সুবীর চাকি খুনে আটক প্রাক্তন পরিচারিকা সহ ২",
+            style: TextStyle(
+              //  fontFamily: "Lobster",
+            ),
+          )
+        ),
+
+        // body: Center(
+        //   child: Icon(
+        //     Icons.person,
+        //     size: 100.0,
+        //     color: Colors.orange,
+        //   ),
+        // )
+
+        // body: Image.asset(
+        //   "assets/poor_man.png",
+        //   width: 500,
+        //   height: 800,
+        //   fit: BoxFit.cover,
+        // )
 
         // body: Image.network(
         //   "https://picsum.photos/250?image=9",
@@ -37,6 +62,7 @@ void main(){
           // height: 700,
           // fit: BoxFit.cover,
         // ),
+
       )
     )
   );
