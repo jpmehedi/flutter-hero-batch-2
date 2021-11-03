@@ -3,6 +3,41 @@ import 'package:flutter/material.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({ Key? key }) : super(key: key);
 
+  showAlertDialog(BuildContext context) {
+    return showDialog(
+      barrierDismissible: false,
+      // barrierColor: Colors.red.shade100,
+      context: context, 
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.orange,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Colors.red,
+              width: 5
+            )
+          ),
+          // titleTextStyle: TextStyle(color: Colors.white),
+          title: Text("This is alert dialog", style: TextStyle(color: Colors.white),),
+          content: Text("This is body of alert dialog"),
+          actions: [
+            TextButton(
+              onPressed: (){}, 
+              child: Text("Yes")
+            ),
+            TextButton(
+              onPressed: (){
+                Navigator.pop(context);
+              }, 
+              child: Text("No")
+            )
+          ],
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,6 +45,45 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         // leading: Icon(Icons.person),
         title: Text("Profile"),
+        actions: [
+          PopupMenuButton(
+            icon: Icon(Icons.more_horiz),
+            onSelected: (value){
+              if(value == 1) {
+                print("Go to contact screen");
+              }else if (value == 2) {
+                 print("Go to play store");
+              }else {
+                print("Rating page");
+              }
+            },
+            color: Colors.orange,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
+                color: Colors.black,
+                width: 4
+              )
+            ),
+            offset: Offset(5, 56),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  child: Text("Item 1"),
+                  value: 1,
+                ),
+                PopupMenuItem(
+                  child: Text("Item 2"),
+                  value: 2,
+                ),
+                PopupMenuItem(
+                  child: Text("Item 3"),
+                  value: 3,
+                )
+              ];
+            }
+          )
+        ],
       ),
       drawer: Drawer(
       child: Column(
@@ -183,6 +257,13 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
+
+            ElevatedButton(
+              onPressed: (){
+                showAlertDialog(context);
+              }, 
+              child: Text("Click")
+            )
           ],
         ),
       ),
