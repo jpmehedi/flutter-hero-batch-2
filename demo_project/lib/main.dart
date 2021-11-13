@@ -1,5 +1,5 @@
 
-import 'package:demo_project/home_page.dart';
+import 'package:demo_project/textfield_screen.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -8,12 +8,10 @@ void main(){
       title: "Demo Project",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: "Lobster",
-        textTheme: TextTheme(
-
-        )
+        // fontFamily: "Lobster",
+        textTheme: TextTheme()
       ),
-      home: HomePage(),
+      home: TextFieldScreen(),
     )
   );
 }
