@@ -1,13 +1,13 @@
-import 'package:demo_project/profile.dart';
+import 'package:demo_project/screen_three.dart';
 import 'package:flutter/material.dart';
 
 class ScreenTwo extends StatelessWidget {
-  final String? name;
-  final int? age;
-  const ScreenTwo({this.name, this.age});
+ static const String path = "ScreenTwo";
 
   @override
   Widget build(BuildContext context) {
+    final Map data = ModalRoute.of(context)!.settings.arguments as Map;
+    print("Data: $data");
     return Scaffold(
       backgroundColor: Colors.orange,
       appBar: AppBar(
@@ -18,15 +18,15 @@ class ScreenTwo extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(name!),
-            Text(age.toString()),
+            Text(data["name"]),
+            Text(data["age"].toString()),
             SizedBox(
               height: 20,
             ),
             ElevatedButton(
               onPressed: (){
-                Route route = MaterialPageRoute(builder: (context)=> ProfileScreen());
-                Navigator.push(context, route);
+                
+                Navigator.pushNamed(context, ScreenThree.path);
               }, 
               child: Text("Screen Two")
             ),

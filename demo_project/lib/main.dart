@@ -1,5 +1,7 @@
 
-import 'package:demo_project/textfield_screen.dart';
+import 'package:demo_project/screen_one.dart';
+import 'package:demo_project/screen_three.dart';
+import 'package:demo_project/screen_two.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -11,7 +13,13 @@ void main(){
         // fontFamily: "Lobster",
         textTheme: TextTheme()
       ),
-      home: TextFieldScreen(),
+      // home: ScreenOne(),
+      initialRoute: ScreenOne.path,
+      routes: {
+        ScreenOne.path : (context)=> ScreenOne(),
+        ScreenTwo.path : (context)=> ScreenTwo(),
+        ScreenThree.path : (context)=> ScreenThree(),
+      },
     )
   );
 }
