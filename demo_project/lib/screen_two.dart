@@ -20,6 +20,7 @@ class ScreenTwo extends StatelessWidget {
           children: [
             Text(data["name"]),
             Text(data["age"].toString()),
+            Text(data["gender"][0]),
             SizedBox(
               height: 20,
             ),

@@ -13,6 +13,12 @@ class _ScreenOneState extends State<ScreenOne> {
 
   final int age = 28;
 
+  List gender = [
+    "Male",
+    "Female",
+    "Other"
+  ];
+
   bool isSelected = false;
 
   @override
@@ -31,7 +37,7 @@ class _ScreenOneState extends State<ScreenOne> {
                 // Navigator.push(context, route);
 
                 // Navigator.pushNamed(context, ScreenTwo.path, arguments: [name, age]);
-                Navigator.pushNamed(context, ScreenTwo.path, arguments: {"name": name, "age": age});
+                Navigator.pushNamed(context, ScreenTwo.path, arguments: {"name": name, "age": age, "gender": gender});
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
