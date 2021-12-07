@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -89,6 +90,36 @@ class _HomeScreenState extends State<HomeScreen> {
      }
    }
 
+   DateTime selectedDate = DateTime.now();
+  _selectedDate(BuildContext context)async{
+    final DateTime? selected = await showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(1900), 
+      lastDate: DateTime(2100)
+    );
+
+    if(selected != null && selected != selectedDate){
+      setState(() {
+        selectedDate = selected;
+      });
+    }
+
+  }
+
+  String? filePath;
+  getImage()async{
+    final ImagePicker _picker = ImagePicker();
+
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+
+    if(image != null){
+      setState(() {
+        filePath = image.path;
+      });
+    }
+  }
+
 
 
 
@@ -119,15 +150,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   primary: Theme.of(context).buttonColor
                 ),
                 onPressed: (){
-                  // launchUrl("https://mehedihasaninfo.com/");
-                  // launchEmail(email);
-                  // callPhone();
-                  sms();
+                  // _selectedDate(context);
+
+                  getImage();
                 }, 
                 child: Text("Click")
               ),
 
-              Text("Hello", style: Theme.of(context).textTheme.bodyText1,),
+              Image.asset("$filePath"),
+
+              // Text("${selectedDate.toString().split(" ")[0]}", style: Theme.of(context).textTheme.bodyText1,),
 
 
               // ElevatedButton(
