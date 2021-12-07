@@ -16,7 +16,7 @@ void main(){
       debugShowCheckedModeBanner: false,
       theme: CustomTheme.lightTheme(),
       darkTheme: CustomTheme.darkTheme(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       initialRoute: HomeScreen.path,
       routes: {
         GridViewScreen.path: (context)=> GridViewScreen(),
