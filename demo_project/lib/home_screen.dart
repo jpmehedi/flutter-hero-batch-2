@@ -1,5 +1,7 @@
 
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -107,15 +109,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   }
 
-  String? filePath;
+
+ File? filePath;
   getImage()async{
     final ImagePicker _picker = ImagePicker();
 
-    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
     if(image != null){
       setState(() {
-        filePath = image.path;
+        filePath = File(image.path);
+        print(filePath);
       });
     }
   }
@@ -157,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text("Click")
               ),
 
-              Image.asset("$filePath"),
+             filePath == null? Text("data") : Image.file(filePath!),
 
               // Text("${selectedDate.toString().split(" ")[0]}", style: Theme.of(context).textTheme.bodyText1,),
 
