@@ -123,19 +123,12 @@ class _Day21ScreenState extends State<Day21Screen> {
             //   }, 
             //   child: Text("Click")
             // )
-
-
             ElevatedButton(
                 onPressed: (){
                   Navigator.of(context).push(createRoute(ScreenThree()));
-              }, 
+                }, 
               child: Text("Click")
             )
-
-
-
-
-
           ],
         ),
       ),
