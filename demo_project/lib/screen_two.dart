@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class ScreenTwo extends StatelessWidget {
  static const String path = "ScreenTwo";
-
+ final String? name;
+ final int? age;
+  const ScreenTwo({this.age, this.name});
   @override
   Widget build(BuildContext context) {
     // final Map data = ModalRoute.of(context)!.settings.arguments as Map;

@@ -33,7 +33,7 @@ class _ScreenOneState extends State<ScreenOne> {
             ElevatedButton(
               onPressed: (){              
                 // Navigator.push(context, MaterialPageRoute(builder: (context)=> ScreenTwo()));
-                // Route route = MaterialPageRoute(builder: (context)=> ScreenTwo(age: age, name: name));
+                Route route = MaterialPageRoute(builder: (context)=> ScreenTwo(age: age, name: name));
                 // Navigator.push(context, route);
 
                 // Navigator.pushNamed(context, ScreenTwo.path, arguments: [name, age]);
