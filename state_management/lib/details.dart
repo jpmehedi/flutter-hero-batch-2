@@ -14,11 +14,9 @@ class DetailsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Consumer<LogicController>(builder: (context, logic, index) {
-              return Text("Flutter Counter:${logic.number}");
-            }),
-            Consumer<LogicController>(builder: (context, logic, index) {
-              return Text("Third number Counter:${logic.thirdNumber}");
+            Consumer<LogicController>(
+                builder: (context, logicController, index) {
+              return Text(" Counter:  ${logicController.number}");
             }),
             SizedBox(
               height: 50,

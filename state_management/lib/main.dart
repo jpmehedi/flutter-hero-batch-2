@@ -15,15 +15,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LogicController()),
+        ChangeNotifierProvider(create: (ctx) => LogicController()),
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: HomeScreen(),
-      ),
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          darkTheme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
+          home: HomeScreen(),
+        );
+      },
     );
   }
 }

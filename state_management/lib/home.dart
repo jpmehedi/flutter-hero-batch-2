@@ -3,12 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:state_management/details.dart';
 import 'package:state_management/logic_controller.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: Column(
           children: [
-            ListTile(title: Text("Count value:")),
+            ListTile(title: Consumer<LogicController>(
+                builder: (context, logicController, index) {
+              return Text("Count value:${logicController.addTwoNumber()}");
+            })),
             ListTile(
               title: Text("This is title"),
             ),
@@ -32,11 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Consumer<LogicController>(builder: (ctx, logic, index) {
-              return Text("Flutter Counter ${logic.number}");
+            Consumer<LogicController>(
+                builder: (context, logicController, index) {
+              return Text(" Counter:  ${logicController.number}");
             }),
-            Consumer<LogicController>(builder: (context, logic, index) {
-              return Text("Third number Counter:${logic.thirdNumber}");
+            Consumer<LogicController>(
+                builder: (context, logicController, index) {
+              return Text(
+                  "Third number Counter:  ${logicController.thirdNumber}");
             }),
             SizedBox(
               height: 50,
@@ -53,10 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton:
-          Consumer<LogicController>(builder: (context, logic, index) {
+          Consumer<LogicController>(builder: (context, logicController, index) {
         return FloatingActionButton(
           onPressed: () {
-            logic.count();
+            logicController.count();
           },
           child: Icon(Icons.add),
         );
